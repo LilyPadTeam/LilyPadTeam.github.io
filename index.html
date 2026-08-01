@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌸 Lily Pad Team</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f6f0fc 0%, #efe6fa 100%);
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1.2rem;
+      color: #1e1a2b;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 980px;
+      width: 100%;
+      background: rgba(255, 250, 255, 0.85);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      background: #fffffffc;
+      border-radius: 44px 44px 36px 36px;
+      box-shadow: 0 20px 60px rgba(90, 50, 140, 0.12), 0 6px 20px rgba(70, 40, 110, 0.06);
+      padding: 2.4rem 2.6rem;
+      border: 1px solid rgba(210, 180, 240, 0.2);
+      transition: all 0.2s;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 1.6rem 1.2rem;
+        border-radius: 32px;
+      }
+    }
+
+    /* Organization navigation */
+    .org-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid #e8ddf5;
+    }
+
+    .org-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .org-brand i {
+      font-size: 2rem;
+      color: #8b6bb0;
+    }
+
+    .org-brand h1 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #6a4e8c, #a07ac0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .org-links {
+      display: flex;
+      gap: 1.6rem;
+      font-weight: 500;
+      color: #3f3250;
+      font-size: 0.95rem;
+    }
+
+    .org-links span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: default;
+      opacity: 0.8;
+    }
+
+    .org-links span:hover {
+      opacity: 1;
+      color: #5f3f7a;
+    }
+
+    .org-links i {
+      font-size: 0.85rem;
+      color: #9577b7;
+    }
+
+    .repo-badge {
+      background: #ede5f7;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #3e2a54;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .repo-badge i {
+      font-size: 0.7rem;
+      color: #7b5d9e;
+    }
+
+    .visible-badge {
+      background: #dccbf2;
+      padding: 0.15rem 1.1rem;
+      border-radius: 60px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      color: #1c112b;
+      display: inline-block;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 2rem;
+    }
+
+    .hero-tag {
+      background: #ede3fc;
+      border-radius: 60px;
+      padding: 0.25rem 1.4rem;
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #422f5a;
+      border: 1px solid #dac7f0;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-tag i {
+      margin-right: 6px;
+      color: #9f7fc7;
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1b1426;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero h2 i {
+      color: #b692d6;
+      margin-right: 4px;
+    }
+
+    .hero .slogan {
+      font-size: 1.1rem;
+      color: #382d48;
+      background: rgba(235, 220, 248, 0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      border-left: 4px solid #b28ed4;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+
+    .contact-email {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+      background: #f3ecfc;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      width: fit-content;
+      border: 1px solid #dac7ef;
+    }
+
+    .contact-email i {
+      color: #7f5fa3;
+    }
+
+    .contact-email a {
+      color: #3b2a4d;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-email a:hover {
+      color: #8b66b0;
+      text-decoration: underline;
+    }
+
+    /* Grid */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 1.8rem 0 1.8rem;
+    }
+
+    @media (max-width: 720px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+    }
+
+    .section-box {
+      background: #faf6ff;
+      border-radius: 28px;
+      padding: 1.6rem 1.8rem 1.8rem;
+      border: 1px solid #e7dbf5;
+      box-shadow: 0 4px 12px rgba(110, 70, 150, 0.03);
+    }
+
+    .section-box h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #291f38;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed #dcccf0;
+      padding-bottom: 0.6rem;
+    }
+
+    .section-box h3 i {
+      color: #9b7bbc;
+      font-size: 1.1rem;
+    }
+
+    .readme-text p {
+      margin-bottom: 0.7rem;
+      color: #2c223b;
+      font-size: 0.98rem;
+    }
+
+    .readme-text .highlight {
+      background: #ece0fc;
+      padding: 0.05rem 0.5rem;
+      border-radius: 16px;
+      font-weight: 500;
+      color: #3b2557;
+    }
+
+    .readme-text .quote {
+      background: #f1e8fe;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      font-style: italic;
+      border-left: 4px solid #b18ad4;
+      margin: 0.7rem 0;
+      font-size: 0.95rem;
+    }
+
+    .lang-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      margin: 0.6rem 0 0.4rem;
+    }
+
+    .lang-pills span {
+      background: white;
+      padding: 0.15rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid #d7c5ed;
+      color: #2f1f42;
+    }
+
+    .lang-pills span i {
+      margin-right: 4px;
+      color: #a381c4;
+    }
+
+    .member-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .member-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #e7dbf5;
+    }
+
+    .member-item i {
+      font-size: 1.2rem;
+      color: #7b5b9f;
+      width: 1.6rem;
+      text-align: center;
+    }
+
+    .member-item .name {
+      font-weight: 600;
+      color: #261d32;
+    }
+
+    .member-item .role {
+      font-size: 0.75rem;
+      background: #efe6fc;
+      padding: 0.1rem 0.9rem;
+      border-radius: 30px;
+      color: #3e2b55;
+      margin-left: 4px;
+    }
+
+    .member-item .badge-admin {
+      background: #d4c0ed;
+      font-weight: 500;
+    }
+
+    .join-note {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      background: #eee2fd;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+
+    .support-box {
+      margin-top: 1.2rem;
+      background: #f3ebfd;
+      padding: 0.7rem 1.4rem;
+      border-radius: 40px;
+    }
+
+    .support-box i {
+      color: #8e6eb3;
+    }
+
+    .support-box a {
+      color: #2e1e41;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dotted #b592d6;
+    }
+
+    .support-box a:hover {
+      color: #6f4d92;
+      border-bottom: 1px solid #6f4d92;
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #453a57;
+      border-top: 1px solid #e5d7f2;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem 1.5rem;
+    }
+
+    .footer-note i {
+      color: #b48fd6;
+      margin: 0 4px;
+    }
+
+    .footer-note .heart {
+      color: #d47b9e;
+    }
+
+    .pinned-repo {
+      background: white;
+      border-radius: 16px;
+      padding: 0.5rem 1rem;
+      margin: 0.4rem 0;
+      border: 1px solid #e2d2f2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .pinned-repo i {
+      color: #7f60a0;
+      font-size: 1rem;
+    }
+
+    .mt-1 { margin-top: 0.5rem; }
+    .flex { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Navigation -->
+  <div class="org-nav">
+    <div class="org-brand">
+      <i class="fas fa-leaf"></i>
+      <h1>LilyPadTeam</h1>
+      <span class="repo-badge"><i class="fas fa-code-branch"></i> 5</span>
+    </div>
+    <div class="org-links">
+      <span><i class="fas fa-compass"></i> Overview</span>
+      <span><i class="fas fa-layer-group"></i> Repositories</span>
+      <span class="visible-badge"><i class="fas fa-eye"></i> visible to anyone</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag"><i class="fas fa-palette"></i> Lily Pad Team</div>
+    <h2><i class="fas fa-seedling"></i> 🌸 Lily Pad Team</h2>
+    <div class="slogan">Brings unmeaningful multi-language programming stuff to life.</div>
+    <div class="contact-email">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:contact.lilypad.team@gmail.com">contact.lilypad.team@gmail.com</a>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid-2col">
+
+    <!-- LEFT: README -->
+    <div class="section-box">
+      <h3><i class="fas fa-book-open"></i> README.md</h3>
+      <div class="readme-text">
+        <p><span class="highlight">🌸 Lily Pad Team</span> — Brings unmeaningful multi-language programming stuff to life</p>
+
+        <p><strong>What's this organization mean and what's it does</strong><br>
+        LilyPadTeam (a.k.a LP Team) is a small organization that created by <span class="highlight">@dryfish09</span>.</p>
+
+        <p>We (and me, dryfish09) aim to creating a active, good, friendly coding community that brings many useful thing.</p>
+
+        <p><strong>Main programming language:</strong></p>
+        <div class="lang-pills">
+          <span><i class="fas fa-code"></i> C#</span>
+          <span><i class="fab fa-android"></i> Kotlin</span>
+          <span><i class="fab fa-html5"></i> HTML/CSS/JavaScript</span>
+          <span><i class="fab fa-js"></i> TypeScript</span>
+          <span><i class="fas fa-cog"></i> C++</span>
+          <span><i class="fas fa-microchip"></i> C (maybe, lol)</span>
+          <span><i class="fab fa-python"></i> Python (if needed)</span>
+          <span><i class="fas fa-file-code"></i> YML/YAML for ci/cd</span>
+        </div>
+
+        <p style="margin-top:0.6rem;"><strong>Members:</strong></p>
+        <div class="member-list">
+          <div class="member-item">
+            <i class="fas fa-user-astronaut"></i>
+            <span class="name">dryfish09</span>
+            <span class="role badge-admin">Organization admin, first member.</span>
+          </div>
+          <div class="member-item">
+            <i class="fas fa-user-ninja"></i>
+            <span class="name">xNoerPlaysCodes</span>
+            <span class="role">Second member.</span>
+          </div>
+        </div>
+
+        <div class="join-note"><i class="fas fa-hand-peace"></i> Everyone can join, feel free to become a member!</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Pinned + What can you do -->
+    <div class="section-box">
+      <h3><i class="fas fa-pin"></i> Pinned repositories</h3>
+      <div class="pinned-repo"><i class="fas fa-archive"></i> <span><strong>LilyPadCore</strong> · C#</span></div>
+      <div class="pinned-repo"><i class="fas fa-mobile-alt"></i> <span><strong>PadKotlin</strong> · Kotlin</span></div>
+      <div class="pinned-repo"><i class="fas fa-globe"></i> <span><strong>lily-ui</strong> · HTML/CSS/TS</span></div>
+      <div class="pinned-repo"><i class="fas fa-cogs"></i> <span><strong>cpp-pad</strong> · C++</span></div>
+      <div class="pinned-repo"><i class="fas fa-terminal"></i> <span><strong>script-lab</strong> · Python + YAML</span></div>
+
+      <div style="margin-top: 1.8rem;">
+        <h3 style="border-bottom: none; padding-bottom: 0; margin-bottom: 0.2rem;"><i class="fas fa-heart" style="color:#b57f9f;"></i> What can you do?</h3>
+        <p style="margin: 0.3rem 0 0.6rem; color: #2c1f3b; font-size:0.95rem;">
+          Feel free to use our tool. And if you want, you can support this team by 🌟 star or fork to contribute our repository, it's free, but it helps we very much.
+        </p>
+        <div class="support-box">
+          <i class="fas fa-star"></i> <a href="#">Star</a> &nbsp;&nbsp;
+          <i class="fas fa-code-branch"></i> <a href="#">Fork</a> &nbsp;&nbsp;
+          <i class="fas fa-hand-holding-heart"></i> contribute
+        </div>
+      </div>
+
+      <div style="margin-top: 1.6rem; background: #f2e9fd; border-radius: 30px; padding: 0.3rem 1rem; display: inline-block; font-size:0.95rem;">
+        <i class="fas fa-smile-wink"></i> Made with 💙 by dryfish09 and members, thank for visiting!
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-note">
+    <span><i class="fas fa-leaf"></i> LilyPadTeam</span>
+    <span><i class="fas fa-users"></i> @LilyPadTeam</span>
+    <span><i class="fas fa-envelope"></i> contact.lilypad.team@gmail.com</span>
+    <span class="heart"><i class="fas fa-heart"></i> open source</span>
+  </div>
+
+</div>
+
+</body>
+</html>
