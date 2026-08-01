@@ -1,0 +1,36 @@
+# _config.yml - LilyPadTeam Landing Page
+
+# Site settings
+title: Lily Pad Team
+description: Brings unmeaningful multi-language programming stuff to life
+email: contact.lilypad.team@gmail.com
+
+# Build settings
+theme: null  # sử dụng HTML thuần, không theme Jekyll
+markdown: kramdown
+highlighter: rouge
+
+# GitHub Pages settings
+github:
+  is_project_page: true
+  repository_url: https://github.com/LilyPadTeam
+
+# Navigation
+nav:
+  - title: Overview
+    url: "#"
+  - title: Repositories
+    url: "#"
+
+# Team members (từ README)
+members:
+  - name: dryfish09
+    role: Organization admin, first member
+  - name: xNoerPlaysCodes
+    role: Second member
+
+
+
+# Footer
+footer:
+  text: Made with 💙 by dryfish09 and members, thank for visiting!
